@@ -1,0 +1,25 @@
+pacman -Syyu
+yay -S ttf-ubuntu ttf-joypixels noto-fonts-emoji nerd-fonts-jetbrains-mono nerd-fonts-hack ttf-font-awesome
+sudo pacman -S noto-fonts-emoji ttf-font-awesome
+fc-cache -fv
+sudo pacman -S lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader -y
+echo "RADV_PERFTEST=aco" > /etc/environment
+sudo pacman -S wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lutris -y
+echo "daniel hard nofile 524288" > /etc/security/limits.conf
+pacman -S meson systemd git dbus -y
+yay -S gamemode lib32-gamemode
+cd ~
+wget https://raw.githubusercontent.com/Termuellinator/ProtonUpdater/master/cproton.sh
+sudo chmod +x cproton.sh
+./cproton.sh
+sudo pacman -S mesa libdrm libglvnd vulkan-intel lib32-vulkan-intel
+echo "options i915 enable_fbc=1" >/etc/modprobe.d/i915.conf
+echo "options i915 enable_psr=0" >/etc/modprobe.d/i915.conf
+echo "options i915 enable_dc=0" >/etc/modprobe.d/i915.conf
+echo "options i915 disable_hangcheck=1" > /etc/modprobe.d/i915.conf
+sudo mkinitcpio -P
+sudo pacman -S cpupower cpupower-runit
+sudo ln -s /etc/runit/sv/cpupower /run/runit/service/
+echo 'governor="performance"' > /etc/conf.d/cpupower
+sudo pacman -S lib32-eudev
+pacman -S steam
