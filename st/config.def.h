@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Jetbrains Mono NerdFont:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Jetbrains Mono NerdFont:style=Light:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -93,6 +93,9 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.8;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
@@ -121,7 +124,7 @@ static const char *colorname[] = {
 	"#cccccc",
 	"#555555",
 	"#cdd6f4", /* default foreground colour */
-	"#171717", /* default background colour */
+	"#000000", /* default background colour */
 };
 
 
@@ -141,7 +144,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers
@@ -499,4 +502,4 @@ static char ascii_printable[] =
 #define UNDERCURL_SPIKY 1
 #define UNDERCURL_CAPPED 2
 // Active style
-#define UNDERCURL_STYLE UNDERCURL_SPIKY
+#define UNDERCURL_STYLE UNDERCURL_CAPPED
