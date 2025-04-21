@@ -23,3 +23,10 @@ sudo ln -s /etc/runit/sv/cpupower /run/runit/service/
 echo 'governor="performance"' > /etc/conf.d/cpupower
 sudo pacman -S lib32-eudev
 pacman -S steam
+cp -r fontconfig ~/.config/
+cd dmenu && sudo make clean install
+cd st && sudo make clean install
+cd slstatus && sudo make clean install
+cd slock && sudo make clean install
+cd dwm && sudo make clean install
+ln -sf Focal_Fossa_Wallpapers/PNG/Focal-Fossa_WP_1920x1080.png ~/.local/share/bg
